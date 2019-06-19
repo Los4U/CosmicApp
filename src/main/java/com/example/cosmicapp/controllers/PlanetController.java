@@ -1,6 +1,6 @@
 package com.example.cosmicapp.controllers;
-
 import com.example.cosmicapp.models.Planet;
+import com.example.cosmicapp.models.dtos.PlanetDTO;
 import com.example.cosmicapp.service.PlanetService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +12,9 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1")
-
 public class PlanetController {
 
     private PlanetService planetService;
-
     public PlanetController(PlanetService planetService) {
         this.planetService = planetService;
     }
@@ -26,4 +24,13 @@ public class PlanetController {
         return this.planetService.getPlanets();
     }
 
+    /*
+
+    DTO - Data Transfer Object
+     */
+
+    @GetMapping("/dto/planets")
+    public List<PlanetDTO> getPlanetsDTO(){
+        return this.planetService.getPlanetsDTO();
+    }
 }
