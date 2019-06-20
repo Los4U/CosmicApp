@@ -1,4 +1,4 @@
-package com.example.cosmicapp.view;
+package com.example.cosmicapp.controllers;
 
 
 import org.springframework.stereotype.Controller;
