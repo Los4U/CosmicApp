@@ -7,4 +7,16 @@
     background-repeat: no-repeat;
 
 ;
+
+
+}
+
+.content{
+    color:white;
+
+}
+.content-header{
+    color:white;
+    font-family: "Bookman Old Style", cursive;
+    font-size: 30px;
 }

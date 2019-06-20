@@ -63,4 +63,11 @@ public class PlanetService {
         planetRepository.deletePlanetByPlanetName(planteName);
     }
 
+    public List<PlanetDTO> getPlanetByDistanceFromSun(Long distance){
+        return planetRepository.findPlanetByDistanceFromSun(distance)
+                .stream()
+                .map(planetMapper::map)
+                .collect(Collectors.toList());
+    }
+
 }

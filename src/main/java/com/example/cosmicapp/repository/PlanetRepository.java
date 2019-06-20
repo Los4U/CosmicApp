@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -19,13 +20,15 @@ public interface PlanetRepository extends JpaRepository<Planet, Long> {
 //    @Query(value = "select * from planets where planet_name  = ?1", nativeQuery = true)//JPQL
 //    Optional<Planet> findPlanetByPlanetName(String planetName);
 
-    @Query("select p from Planet planet where planet.planetName  = ?1") //JPQL
+    @Query("select p from Planet p where p.planetName  = ?1") //JPQL
     Optional<Planet> findPlanetByPlanetName(String planetName);
 
     @Modifying
     @Transactional
-    @Query("select p from Planet planet where planet.planetName  = ?1")
+    @Query("select p from Planet p where p.planetName  = ?1")
     void deletePlanetByPlanetName(String planetName);
 
+    @Query("select p from Planet p where p.distanceFromSun <= ?1 ")
+    List<Planet> findPlanetByDistanceFromSun(Long distance);
 
 }
