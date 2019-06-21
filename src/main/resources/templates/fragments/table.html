@@ -13,13 +13,13 @@
                 </tr>
                 <tr th:each="planet : ${planets}">
                     <td th:text="${planet.planetName}"></td>
-                    <td th:text="${#numbers.formatInteger(planet.getDistanceFromSun(), 1,'COMMA')}"></td>
-                    <td th:text="${#numbers.formatDecimal(planet.getOneWayLightTimeToTheSun(), 1, 6, 'POINT')}"></td>
-                    <td th:text="${#numbers.formatInteger(planet.getLengthOfYear(), 1,'COMMA')}"></td>
-                    <td th:text="${planet.getPlanetType()}"></td>
+                    <td th:text="${#numbers.formatInteger(planet.distanceFromSun, 1,'COMMA')}"></td>
+                    <td th:text="${#numbers.formatDecimal(planet.oneWayLightTimeToTheSun, 1, 6, 'POINT')}"></td>
+                    <td th:text="${#numbers.formatInteger(planet.lengthOfYear, 1,'COMMA')}"></td>
+                    <td th:text="${planet.planetType}"></td>
                     <td>
                         <form action="/delete" method="get">
-                            <input type="hidden" th:value="${planet.getPlanetName()}" name="planet">
+                            <input type="hidden" th:value="${planet.planetName}" name="planet">
                             <button class="btn btn-sm btn-warning" type="submit"> DELETE</button>
                         </form>
                     </td>
