@@ -1,0 +1,30 @@
+
+<div class="container" th:fragment="table"  xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-12-md">
+            <table class="table table-boarded">
+                <tr>
+                    <th>Planet Name</th>
+                    <th>Distance From Sun</th>
+                    <th>One way light time</th>
+                    <th>Length od Year</th>
+                    <th>Planet Type</th>
+                    <th>Planet Image</th>
+                </tr>
+                <tr th:each="planet : ${planets}">
+                    <td th:text="${planet.planetName}"></td>
+                    <td th:text="${#numbers.formatInteger(planet.getDistanceFromSun(), 1,'COMMA')}"></td>
+                    <td th:text="${#numbers.formatDecimal(planet.getOneWayLightTimeToTheSun(), 1, 6, 'POINT')}"></td>
+                    <td th:text="${#numbers.formatInteger(planet.getLengthOfYear(), 1,'COMMA')}"></td>
+                    <td th:text="${planet.getPlanetType()}"></td>
+                    <td>
+                        <form action="/delete" method="get">
+                            <input type="hidden" th:value="${planet.getPlanetName()}" name="planet">
+                            <button class="btn btn-sm btn-warning" type="submit"> DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
