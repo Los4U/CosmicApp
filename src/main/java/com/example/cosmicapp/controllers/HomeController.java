@@ -4,6 +4,9 @@ package com.example.cosmicapp.controllers;
 import com.example.cosmicapp.commons.extras.CreatorXLS;
 import com.example.cosmicapp.models.dtos.PlanetDTO;
 import com.example.cosmicapp.service.PlanetService;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +29,12 @@ public class HomeController {
     @GetMapping("/")
     public String homaPage(Model model){
         model.addAttribute("planets", planetService.getPlanetsDTO());
+        SecurityContext securityContext = SecurityContextHolder.getContext() ;
+        model.addAttribute("message", "You are logged as: " + securityContext.getAuthentication().getName());
         return "index";
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/planets")
     public String planetPage(Model model){
         model.addAttribute("planets", planetService.getPlanetsDTO());
@@ -56,6 +61,10 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
 
 
 
