@@ -20,7 +20,9 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String homaPage(){
+    public String homaPage(Model model){
+        model.addAttribute("planets", planetService.getPlanetsDTO());
+        System.out.println("Planet: " + planetService.getPlanetsDTO());
         return "index";
     }
 

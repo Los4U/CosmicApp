@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head"></head>
-<body>
 
-<header class="masterhead">
-<div class="row h-100 align-items-center">
-    <div class="col-12 text-center">
-        <h3 class="font-weight-light content">
-            Welcom to simple cosmic app <span class="content-header">Enjoy</span>
-        </h3>
-        <a href="/planets"> <p>Planets</p> </a>
+<head th:replace="fragments/header :: head"></head>
+
+<body class="masterhead">
+
+<div class="container">
+    <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-light content">
+                Welcom to simple cosmic app <span class="content-header">Enjoy</span>
+            </h3>
+            <a href="/planets"> <p>Planets</p> </a>
+        </div>
     </div>
+    <div class="row h-100 align-items-center">
+        <div th:replace="fragments/overview :: planets"
+    </div>
+
 </div>
 
-</header>
 
 </body>
 </html>

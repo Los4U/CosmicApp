@@ -1,0 +1,11 @@
+
+<div lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="planets">
+    <div class="card" style="width: 18rem;" th:each="p : ${planets}" >
+        <img class="card-img-top" th:src="@{${p.planetImage}}" alt="Card image cap" style="width: auto; height: 90px;">
+        <div class="card-body">
+            <h5 class="card-title" style="color: saddlebrown;" th:text="${p.planetName}"></h5>
+            <p class="card-text" th:text="${p.planetInfo}"></p>
+            <a href="#" class="btn btn-primary">more info</a>
+        </div>
+    </div>
+</div>
